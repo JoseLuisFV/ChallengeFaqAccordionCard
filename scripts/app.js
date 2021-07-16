@@ -31,14 +31,12 @@ for (const question of questions) {
     const questionItem = document.createElement('li')
     questionItem.classList.add('questions__item')
 
-    const questionItemTitle = document.createElement('h4');
-    questionItemTitle.classList.add('question__title')
-    const arrow = document.createElement('span');
-    questionItemTitle.append(`${question.title}`, arrow);
+    const questionItemTitle = document.createElement('button');
+    questionItemTitle.classList.add('question__button');
+    questionItemTitle.textContent = question.title;
 
     const questionItemContent = document.createElement('p');
     questionItemContent.classList.add('question__answear');
-    questionItemContent.classList.add('close');
     questionItemContent.textContent = `${question.content}`;
     fragmentQuestion.append(questionItemTitle, questionItemContent);
 
@@ -49,29 +47,24 @@ for (const question of questions) {
 
 questionsList.append(...nodesQuestion);
 
+const changeStateQuestion = (title, content) => {
+    if (!content.classList.contains('open') && !title.classList.contains('active')){
+        content.classList.add('open');
+        title.classList.add('active')
+    } else {
+        content.classList.remove('open');
+        title.classList.remove('active')
+    }
+}
 
 questionsList.addEventListener('click', (e) => {
     const elementClicked = e.target;
     if (elementClicked.classList.contains('questions__item')) {
-        const content = Array.from(elementClicked.children);
-        if (content[1].classList.contains('close')){
-            content[1].classList.remove('close');
-        } else {
-            content[1].classList.add('close');
-        }
-    } else if (elementClicked.classList.contains('question__title')) {
-        const content = elementClicked.nextElementSibling;
-        if (content.classList.contains('close')){
-            content.classList.remove('close');
-        } else {
-            content.classList.add('close');
-        }
+        const item = Array.from(elementClicked.children);
+        changeStateQuestion(item[0], item[1]);
+    } else if (elementClicked.classList.contains('question__button')) {
+        changeStateQuestion(elementClicked, elementClicked.nextElementSibling);
     } else if (elementClicked.classList.contains('question__answear')){
-        const content = elementClicked;
-        if (content.classList.contains('close')){
-            content.classList.remove(('close'));
-        } else {
-            content.classList.add('close');
-        }
+        changeStateQuestion(elementClicked.previousElementSibling, elementClicked);
     }
 });

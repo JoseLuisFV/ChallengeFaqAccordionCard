@@ -21,15 +21,20 @@ body {
     background-image: var(--bg-gradient);
 }
 
+main {
+    padding-top: 140px;
+}
+
 .faq-card {
     display: flex;
     flex-direction: column;
     width: 90%;
     min-width: 320px;
     height: auto;
-    margin: 170px auto 80px;
+    margin: 0px auto 80px;
     background-color: white;
     border-radius: 20px;
+    box-shadow: 8px 30px 38px rgba(0, 0, 0, .4);
 }
 
 .faq-card__decoration-container {
@@ -48,7 +53,6 @@ body {
     height: auto;
     object-fit: contain;
     object-position: center;
-    
 }
 
 .decoration__solid {
@@ -65,7 +69,7 @@ body {
     margin: 0 auto;
     width: 90%;
     max-width: 400px;
-    padding-bottom: 25px;
+    padding-bottom: 55px;
 }
 
 .questions__title {
@@ -85,16 +89,29 @@ body {
     cursor: pointer;
 }
 
-.questions__item:hover .question__title {
+.questions__item:hover .question__button{
     color: hsl(14, 88%, 65%);
 }
 
-.question__title {
+.question__button {
     position: relative;
+    display: block;
+    width: 100%;
+    text-align: start;
+    background-color: transparent;
+    border: none;
+    font-family: 'Kumbh Sans', sans-serif;
+    font-weight: 400;
+    cursor: pointer;
+    transition: all 0.5s ease;
 }
 
-.question__title span {
+
+
+.question__button::after {
+    content: '';
     position: absolute;
+    top: calc(50% - 5px);
     right: 0;
     display: inline-block;
     width: 10px;
@@ -103,22 +120,36 @@ body {
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
-    vertical-align: middle;
+    vertical-align: text-bottom;
+    transition: all 0.5s ease;
+}
+
+.active {
+    font-weight: 700;
+}
+
+.active::after {
+    transform: rotate(180deg);
 }
 
 .question__answear {
+    max-height: 0px;
     line-height: 1.8rem;
-    margin-top: 10px;
-}
-
-.close {
-    display: none;
+    margin-top: 5px;
+    overflow: hidden;
+    transition: all 0.5s ease-in-out;
 }
 
 .open {
-    display: block;
+    margin-top: 10px;
+    max-height: 90px;
 }
 
-
-.attribution { font-size: 11px; text-align: center; margin-bottom: 100px;}
-.attribution a { color: hsl(228, 45%, 44%); }
+.attribution { 
+    font-size: 11px; 
+    text-align: center; 
+    margin-bottom: 170px;
+}
+.attribution a { 
+    color: hsl(228, 45%, 44%); 
+}

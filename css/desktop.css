@@ -1,0 +1,81 @@
+.faq-card {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    width: 93%;
+    max-width: 1050px;
+    height: 580px;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.faq-card::after {
+    position: absolute;
+    top: calc(50% - 22px);
+    left: -107px;
+    content: '';
+    width: 220px;
+    height: 200px;
+    background-image: url('../images/illustration-box-desktop.svg');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.faq-card__decoration-container {
+    position: relative;
+    width: 55%;
+    height: 100%;
+    margin: 0;
+    overflow: hidden;
+}
+
+.decoration__shadow {
+    position: absolute;
+    top: calc(50% - 485px);
+    left: -435px;
+    height: 900px;
+    width: auto;
+    margin: 0;
+    object-fit: contain;
+    object-position: center;
+}
+
+.decoration__solid {
+    position: absolute;
+    top: calc(50% - 200px);
+    left: 0;
+    height: 440px;
+    width: 500px;
+    object-fit: cover;
+    object-position: -100px;
+}
+
+.questions {
+    height: 58%;
+    width: 50%;
+    padding: 0;
+    margin: 0;
+    margin-right: 30px;
+}
+
+.questions__title {
+    text-align: start;
+}
+.questions__list {
+    height: 280px;
+    padding-right: 30px;
+    overflow-y: scroll;
+}
+
+.questions__list::-webkit-scrollbar {
+    width: 8px;
+}
+
+.questions__list::-webkit-scrollbar-track {
+    background-color: hsl(238, 29%, 16%);
+}
+
+.questions__list::-webkit-scrollbar-thumb {
+    background: hsl(14, 88%, 65%);
+    border-radius: 25px;
+}
